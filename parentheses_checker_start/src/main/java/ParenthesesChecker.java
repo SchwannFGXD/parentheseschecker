@@ -44,32 +44,37 @@ public class ParenthesesChecker {
 
         //time complexity O(n)
         for (int i = 0; i < stack.size()+1; i++) {
-
+            //if stack empty
             if(stack.size()==0){
                 return true;
             }
+            //if stack has single
             if(stack.size()==1 || i ==stack.size()-1){
                 return false;
             }
+            //if index goes below 0, reset.
             if(i<0){
                 i=0;
             }
-
+            //check for parentheses
             if (stack.get(i).charAt(0) == '(' && stack.get(i+1).charAt(0) ==')') {
                 stack.remove(i+1);
                 stack.remove(i);
                 i=i-2;
             }
+            //check for brackets
             else if (stack.get(i).charAt(0) == '[' && stack.get(i+1).charAt(0) ==']') {
                 stack.remove(i+1);
                 stack.remove(i);
                 i=i-2;
             }
+            //check for angle brackets
             else if (stack.get(i).charAt(0) == '<' && stack.get(i+1).charAt(0) =='>') {
                 stack.remove(i+1);
                 stack.remove(i);
                 i=i-2;
             }
+            //check for braces
             else if (stack.get(i).charAt(0) == '{' && stack.get(i+1).charAt(0) =='}') {
                 stack.remove(i+1);
                 stack.remove(i);
