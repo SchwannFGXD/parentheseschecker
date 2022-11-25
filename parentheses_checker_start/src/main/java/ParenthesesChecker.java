@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class ParenthesesChecker {
 
     private char[] list= new char[]{'(',')','{','}','<','>','[',']'};
+
 
     public ParenthesesChecker(){
 
@@ -22,13 +25,15 @@ public class ParenthesesChecker {
     //puts only parentheses, brackets etc in a stack in order.
     public Stack<String> printStack(String text ){
         //space complexity O(1)
+        List<Character> list2 = Arrays.asList('(',')','{','}','<','>','[',']');
+        //space complexity O(1)
+        char[] newText = text.toCharArray();
+        //space complexity O(1)
         Stack<String> stack = new Stack<>();
-        //time complexity O(n^2)
-        for (int i=0; i<text.length();i++){
-            for(char element: list){
-                if(element == text.charAt(i)){
-                    stack.push(Character.toString(element));
-                }
+        //time complexity O(n)
+        for(Character character: newText){
+            if(list2.contains(character)){
+                stack.push(Character.toString(character));
             }
         }
         return stack;
